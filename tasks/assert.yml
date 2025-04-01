@@ -1,0 +1,33 @@
+---
+# check OS
+- name: check that we are on the right distribution
+  ansible.builtin.assert:
+    fail_msg: "role only supported on Rocky 8"
+    that:
+      - ansible_distribution == "Rocky"
+      - ansible_distribution_major_version | int == 8
+
+# check third-party binaries
+- name: scan binaries
+  ansible.builtin.stat:
+    checksum_algorithm: sha256
+    path: "{{ playbook_dir }}/binaries/{{ item }}"
+  register: files
+  delegate_to: localhost
+  with_items:
+    - "{{ binaries.keys() }}"
+
+- name: check that binaries exist
+  ansible.builtin.assert:
+    fail_msg: "'{{ item.item }}' not found in '{{ item.invocation.module_args.path }}'"
+    that: item.stat.exists
+  delegate_to: localhost
+  with_items: "{{ files.results }}"
+
+- name: check that binaries have correct checksum
+  ansible.builtin.assert:
+    fail_msg: "'{{ item.item }}' should '{{ item.stat.checksum }}' as sha256sum - did you give me the correct binaries ?"
+    that:
+      - item.stat.checksum == binaries[item.item]
+  delegate_to: localhost
+  with_items: "{{ files.results }}"

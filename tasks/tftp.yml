@@ -1,0 +1,26 @@
+---
+- name: install tftp
+  ansible.builtin.package:
+    name: tftp-server
+
+- name: create firmware dir
+  ansible.builtin.file:
+    path: /var/lib/tftpboot/bootimage
+    state: directory
+    owner: root
+    group: root
+    mode: 0755
+
+- name: copy firmware files
+  ansible.builtin.copy:
+    src: "{{ playbook_dir }}/binaries/{{ item }}"
+    dest: "/var/lib/tftpboot/bootimage/{{ item }}"
+  with_items:
+    - iprfp3G.dnld
+    - iprfp4G.dnld
+
+- name: enable and start tftp
+  ansible.builtin.service:
+    name: tftp
+    state: started
+    enabled: True

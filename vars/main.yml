@@ -1,0 +1,7 @@
+---
+# vars file for roles/tarmac.mitel_omm
+binaries:
+  iprfp3G.dnld: ec3b00f3201f2af951d090a9f8a2bc3a7a8482361b01439efaac63c8bccb1bfa
+  iprfp4G.dnld: 450f6cccc629a42dc0afd5e4a8fe81e33da953832e48936690cacde3974110d4
+  SIP-DECT-OMM-8.3_SP5_IC31-0.i686.rpm: ad11e1d0022c67b22f3bdebc8854054d8be2d554e6a3ff1a08a18fb4766c9697
+  SIP-DECT-HANDSET-8.3_SP5_IC31-0.i686.rpm: 125bbfa6c02e16a8ac04eb7b12039a02413967bcb6633ac4c32fe617d42deb4d

@@ -1,0 +1,12 @@
+galaxy_info:
+  author: Gregor Michels
+  description: installs Mitels Open Mobility Manager (OMM) onto a rocky
+  company: TARMAC e.V.
+
+  license: MIT
+
+  min_ansible_version: 2.1
+
+  galaxy_tags: []
+
+dependencies: []

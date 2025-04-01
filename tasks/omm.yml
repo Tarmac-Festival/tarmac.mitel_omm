@@ -1,0 +1,19 @@
+---
+- name: copy packages onto machine
+  ansible.builtin.copy:
+    src: "{{ playbook_dir }}/binaries/{{ item }}"
+    dest: "/tmp/{{ item }}"
+  with_items:
+    - "{{ binaries | select('search', '.rpm')}}"
+
+- name: install packages
+  ansible.builtin.dnf:
+    name: "/tmp/{{ item }}"
+  with_items:
+    - "{{ binaries | select('search', '.rpm')}}"
+
+- name: enable and start sip-dect-omm service
+  ansible.builtin.service:
+    name: sip-dect-omm
+    state: started
+    enabled: True

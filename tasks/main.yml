@@ -1,0 +1,7 @@
+---
+# tasks file for roles/tarmac.mitel_omm
+- import_tasks: assert.yml
+
+- import_tasks: omm.yml
+
+- import_tasks: tftp.yml
