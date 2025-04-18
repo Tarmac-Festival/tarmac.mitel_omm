@@ -1,4 +1,17 @@
 ---
+- name: install dependencies
+  ansible.builtin.package:
+    name:
+      - unzip
+      - glibc.i686
+      - libxcrypt.i686
+      - zlib.i686
+      - telnet
+      - libstdc++
+      - libstdc++.i686
+      - procps
+      - initscripts
+
 - name: copy packages onto machine
   ansible.builtin.copy:
     src: "{{ playbook_dir }}/binaries/{{ item }}"
@@ -11,6 +24,8 @@
     name: "/tmp/{{ item }}"
   with_items:
     - "{{ binaries | select('search', '.rpm')}}"
+  notify:
+    - systemctl daemon-reload
 
 - name: enable and start sip-dect-omm service
   ansible.builtin.service:
