@@ -1,7 +1,7 @@
 tarmac.mitel_omm
 =========
 
-This role installs the `Mitel Open Mobility Manager (OMM)` onto a Rocky Linux (8) machine.
+This role installs the `Mitel Open Mobility Manager (OMM)` onto a Rocky Linux (9) machine.
 It also installs a `tftp` server with the fimware files for the `RFPs`.
 
 
@@ -26,17 +26,17 @@ For further information please check out
 Limitations/Quirks
 ------------------
 
-This role only installs OMM Version `8.3_SP5_IC31` onto a Rocky `8`.
+This role only installs OMM Version `9.2-JF12` onto a Rocky `9`.
 All other versions will not work.
 
 Access to the Mitel Software is only granted to customers / dealers.
 After downloading it copy the following binaries into a folder called `binaries` (which resides in the same root as the calling playbook):
 ```
 $ sha256sum binaries/*
-ec3b00f3201f2af951d090a9f8a2bc3a7a8482361b01439efaac63c8bccb1bfa  binaries/iprfp3G.dnld
-450f6cccc629a42dc0afd5e4a8fe81e33da953832e48936690cacde3974110d4  binaries/iprfp4G.dnld
-125bbfa6c02e16a8ac04eb7b12039a02413967bcb6633ac4c32fe617d42deb4d  binaries/SIP-DECT-HANDSET-8.3_SP5_IC31-0.i686.rpm
-ad11e1d0022c67b22f3bdebc8854054d8be2d554e6a3ff1a08a18fb4766c9697  binaries/SIP-DECT-OMM-8.3_SP5_IC31-0.i686.rpm
+9b31e1deea05e087ca1a740d5e977e4ce21be384e6d1c653f898e313156ad5ce  binaries/iprfp3G.dnld
+0982470f09a23552b235f8fd4c146964118b16515418d1ff2a5a9738e378d390  binaries/iprfp4G.dnld
+24685dae7d09fad72d97fd19876103810e35de53765a618320de0c0a60b25e8a  binaries/SIP-DECT-HANDSET-9.2__JF12-0.i686.rpm
+f45e2c5bbdef222b9716b8d5f4c8bb09d9c1df1b6bd6088a0955f776f27c5bd7  binaries/SIP-DECT-OMM-9.2__JF12-0.i686.rpm
 ```
 
 **The role asserts the checksum of the files**

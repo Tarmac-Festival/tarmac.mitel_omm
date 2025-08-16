@@ -2,10 +2,10 @@
 # check OS
 - name: check that we are on the right distribution
   ansible.builtin.assert:
-    fail_msg: "role only supported on Rocky 8"
+    fail_msg: "role only supported on Rocky 9"
     that:
       - ansible_distribution == "Rocky"
-      - ansible_distribution_major_version | int == 8
+      - ansible_distribution_major_version | int == 9
 
 # check third-party binaries
 - name: scan binaries
