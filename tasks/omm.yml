@@ -11,11 +11,10 @@
     name: "{{ binaries | select('search', '.rpm') | map('regex_replace', '^', '/tmp/') }}"
     allowerasing: True
     disable_gpg_check: True
-  notify:
-    - systemctl daemon-reload
 
 - name: enable and start sip-dect-omm service
-  ansible.builtin.service:
+  ansible.builtin.systemd_service:
     name: sip-dect-omm
     state: started
     enabled: True
+    daemon_reload: True
