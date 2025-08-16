@@ -14,7 +14,7 @@
 - name: copy firmware files
   ansible.builtin.copy:
     src: "{{ playbook_dir }}/binaries/{{ item }}"
-    dest: "/var/lib/tftpboot/bootimage/{{ item }}"
+    dest: "/var/lib/tftpboot/{{ item }}"
   with_items:
     - iprfp3G.dnld
     - iprfp4G.dnld
