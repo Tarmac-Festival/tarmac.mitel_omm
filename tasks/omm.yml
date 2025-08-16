@@ -6,6 +6,10 @@
   with_items:
     - "{{ binaries | select('search', '.rpm')}}"
 
+- name: install dependencies
+  ansible.builtin.dnf:
+    name: initscripts
+
 - name: install packages
   ansible.builtin.dnf:
     name: "{{ binaries | select('search', '.rpm') | map('regex_replace', '^', '/tmp/') }}"
