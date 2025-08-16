@@ -10,6 +10,7 @@
   ansible.builtin.dnf:
     name: "{{ binaries | select('search', '.rpm') | map('regex_replace', '^', '/tmp/') }}"
     allowerasing: True
+    disable_gpg_check: True
   notify:
     - systemctl daemon-reload
 
